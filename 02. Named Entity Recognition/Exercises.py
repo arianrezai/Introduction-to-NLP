@@ -1,6 +1,6 @@
 
 """
-EXERCISE 1
+SECTION 1: INTRODUCTION ON NAMED ENTITY RECOGNITION
 """
 
 import nltk
@@ -29,7 +29,7 @@ pos_sentences = [nltk.pos_tag(sent) for sent in token_sentences]
 # Create the named entity chunks: chunked_sentences
 chunked_sentences = nltk.ne_chunk_sents(pos_sentences,binary = True)
 
-#binary = True, this means either something is a named entity, or not
+# Binary = True means that any token is either a named entity or not
 
 # Test for stems of the tree with 'NE' tags
 for sent in chunked_sentences:
@@ -41,7 +41,7 @@ for sent in chunked_sentences:
 
 
 """
-EXERCISE 2: how many NER per category?
+SECTION 2: IDENTIFY HOW MANY TOKENS PRESENT A NER CATEGORY
 """
 from collections import defaultdict
 import matplotlib.pyplot as plt
@@ -70,7 +70,7 @@ plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
 plt.show()
 
 """
-EXERCISE 3: SPaCY
+SECTION 3: INTRODUCTION TO spaCy
 """
 # Import spacy
 import spacy

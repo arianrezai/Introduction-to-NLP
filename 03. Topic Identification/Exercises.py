@@ -1,5 +1,5 @@
 """
-Exercise 1 
+SECTION 1: INTRODUCTION ON TOPIC IDENTIFICATION
 """
 import os
 import sys
@@ -31,8 +31,7 @@ bow_simple = Counter(lower_tokens)
 print(bow_simple.most_common(10))
 
 """
-EXERCISE 2
-
+SECTION 2: LEMMATIZATION
 """
 
 # Import WordNetLemmatizer
@@ -59,16 +58,14 @@ bow = Counter(lemmatized)
 print(bow.most_common(10))
 
 """
-EXERCISE 3: Word Vectorization
+SECTION 3: WORD VECTORIZATION
 """
 
-#LDA visualization: statistical model for topic modeling
+# The Dictionary function maps each token to an ID
 
-# Passing the Dictionary function: each token mapped to an ID
-
-# dictionary.token2id to see the mapping
+# dictionary.token2id can be used to see the mapping
  
-# Corpus: each document is transformed in it's BOW representation (token_id: frequency)
+# In the Corpus each document is transformed in it's BOW representation ( token_id: frequency )
 
 # Import Dictionary
 from gensim.corpora.dictionary import Dictionary
@@ -82,28 +79,26 @@ computer_id = dictionary.token2id.get("computer")
 # Use computer_id with the dictionary to print the word
 print(dictionary.get(computer_id))
 
-# Create a MmCorpus: corpus
+# Create a Corpus: corpus
 corpus = [dictionary.doc2bow(article) for article in articles]
 
 # Print the first 10 word ids with their frequency counts from the fifth document
 print(corpus[0][:10])
 
 """
-EXERCISE 4
+SECTION 4: MOST FREQUENT WORDS
 """
 
-# Save the fifth document: doc
+# Save the first document: doc
 doc = corpus[0]
 
 # Sort the doc for frequency: bow_doc
 bow_doc = sorted(doc, key=lambda w: w[1], reverse=True)
 
-# Print the top 5 words of the document alongside the count  OJO
+# Print the top 5 words of the document alongside the count
 for word_id, word_count in bow_doc[:5]:
     print(dictionary.get(word_id), word_count)
 
-# NOW WE DO THE SAME (FIND MOST FREQUENT WORDS) FOR ALL THE CORPUS!
- 
 # Create the defaultdict: total_word_count containing total word count in all corpus
 from itertools import chain
 from collections import defaultdict
@@ -121,7 +116,7 @@ for word_id, word_count in sorted_word_count[:5]:
 
 
 """
-EXERCISE 5: TF-IDF
+SECTION 5: TF-IDF
 """
 from gensim.models.tfidfmodel import TfidfModel
 

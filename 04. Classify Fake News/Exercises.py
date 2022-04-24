@@ -1,5 +1,5 @@
 """
-SECTION 1: COUNTVECTORIZER
+SECTION 1: TRANSFORM DATA USING COUNTVECTORIZER
 """
 
 # Import the necessary modules
@@ -34,7 +34,7 @@ count_test = count_vectorizer.transform(X_test)
 print(count_vectorizer.get_feature_names()[:10])
 
 """
-SECTION 2: TFIDF
+SECTION 2: TRANSFORM DATA USING TF-IDF
 """
 # Import TfidfVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -56,7 +56,7 @@ print(tfidf_vectorizer.get_feature_names()[:10])
 print(tfidf_train.A[:5])
 
 """
-SECTION 3: VECTOR VISUALIZATION
+SECTION 3: VECTORS VISUALIZATION
 """
 # Create the CountVectorizer DataFrame: count_df
 count_df = pd.DataFrame(count_train.A, columns=count_vectorizer.get_feature_names())
@@ -79,7 +79,7 @@ print(count_df.equals(tfidf_df))
 
 
 """
-SECTION 4: NAIVE BAYES CLASSIFIER on COUNTVECTORIZED DATA
+SECTION 4: NAIVE BAYES CLASSIFIER ON COUNTVECTORIZED DATA
 """
 # Multinomial Naive Bayes works well with CountVectorizer since it expects integer inputs
 # For floats (as TFiDF) is better to use Support Vector Machines or even Linear Models

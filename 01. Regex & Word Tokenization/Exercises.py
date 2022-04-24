@@ -1,23 +1,18 @@
 """
-EXERCISE 1
+SECTION 1: BASIC REGEX FUNCTIONS
 """
 
-import re
+# Match words, digit and spaces in a text
 
-# Match the first word or digit in a text
+import re
 
 re.match("\w+", "this is an example")
 
 re.match("\d", "559302")
 
-# . is a wild card, matches any character or digit
-# Adding * or + makes the researc greedy
-
-# The Split function returns a list
-
 re.split("\s", "Split on spaces")
 
-""" Exercise 1: find Pattern so that it returns ['Let', 's', 'write', 'RegEx'] from my_string"""
+# Find a pattern that returns ['Let', 's', 'write', 'RegEx'] from my_string
 
 my_string = "Let's write RegEx!"
 
@@ -26,7 +21,7 @@ PATTERN = "\w+"
 re.findall(PATTERN, my_string)
 
 """ 
-EXERCISE 2
+SECTION 2: PATTERN MATCHING
 """
 
 my_string = "Let's write RegEx!  Won't that be fun?  I sure think so.  Can you find 4 sentences?  Or perhaps, all 19 words?"
@@ -53,7 +48,7 @@ print(re.findall(digits, my_string))
 # Viceversa the Match function is needed
 
 """ 
-EXERCISE 3
+SECTION 3: TOKENIZATION BASED ON REGEX
 """
 scene_one = """SCENE 1: [wind] [clop clop clop] 
 KING ARTHUR: Whoa there!  [clop clop clop] 
@@ -132,7 +127,7 @@ print(re.match(pattern2, sentences[3]))
 print(re.match(pattern2, "Arthur King : give me"))
 
 """
-EXERCISE 4: CREATE GROUPS () AND CHARACTER CLASSES []
+SECTION 4: GROUPS AND CHARACTER CLASSES
 """
 # When you don't want to use . and - with regex meaning use escape character \
 
@@ -145,17 +140,18 @@ re.match("[a-z 0-9]+", my_string)
 #  regexp_tokenize fa parsing in cui TIENE solo le parole che rispettano la regex
 
 """
-EXERCISE 5
+SECTION 5: REGEX PATTERNS FOR TWEETS
 """
 
 my_string = "The player #1 has been selected!"
 
 from nltk.tokenize import regexp_tokenize
 
-# Write a pattern that keeps words, Hashtags+number and punctuation
+# Write a pattern that matches words, Hashtags followed by a number and punctuation
 
 regexp_tokenize( my_string , r"(\w+|#\d|\?|!)")
 
 # Write a pattern that matches both mentions (@) and hashtags
+
 pattern2 = r"([@|#]\w+)"
 
