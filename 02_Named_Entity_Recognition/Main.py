@@ -75,10 +75,10 @@ SECTION 3: INTRODUCTION TO spaCy
 """
 
 # Instantiate the English model: nlp
-nlp = spacy.load('en',tagger=False, parser=False, matcher=False)
+nlp = spacy.load('en_core_web_sm')
 
 # Create a new document: doc
-doc = nlp(article_new)
+doc = nlp(article)
 
 # Print all of the found entities and their labels
 for ent in doc.ents:
