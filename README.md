@@ -1,6 +1,6 @@
 # Introduction-to-NLP
 
-The following repostory aims to collect fundamental functions needed to perform basic Natural Language Processing projects. 
+The following repository aims to collect fundamental functions needed to perform basic Natural Language Processing tasks. 
 
 The structure of the repository is the following:
 
