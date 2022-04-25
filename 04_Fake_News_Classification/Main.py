@@ -6,12 +6,16 @@ SECTION 1: TRANSFORM DATA USING COUNTVECTORIZER
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer 
 from sklearn.model_selection import train_test_split 
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import metrics
+from sklearn.naive_bayes import MultinomialNB
+import numpy as np
 import os
 
-# Import csv as df and Print the head of df
+# Import csv as df and print the head of df
 directory = os.getcwd()
 
-directory += "\\04. Classify Fake News\\fake_or_real_news.csv"
+directory += "\\04_Fake_News_Classification\\fake_or_real_news.csv"
 df = pd.read_csv(directory)
 print(df.head())
 
@@ -36,9 +40,6 @@ print(count_vectorizer.get_feature_names()[:10])
 """
 SECTION 2: TRANSFORM DATA USING TF-IDF
 """
-# Import TfidfVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 
 # Initialize a TfidfVectorizer object: tfidf_vectorizer
 tfidf_vectorizer = TfidfVectorizer(stop_words="english", max_df=0.7)
@@ -82,11 +83,8 @@ print(count_df.equals(tfidf_df))
 SECTION 4: NAIVE BAYES CLASSIFIER ON COUNTVECTORIZED DATA
 """
 # Multinomial Naive Bayes works well with CountVectorizer since it expects integer inputs
-# For floats (as TFiDF) is better to use Support Vector Machines or even Linear Models
+# For floats (as TFiDF) it would better to use Support Vector Machines or even Linear Models
 
-# Import the necessary modules
-from sklearn import metrics
-from sklearn.naive_bayes import MultinomialNB
 
 # Instantiate a Multinomial Naive Bayes classifier: nb_classifier
 nb_classifier = MultinomialNB()
@@ -132,7 +130,7 @@ print(cm)
 SECTION 6: IMPROVING THE MODEL
 """
 # Create the list of alphas: alphas
-import numpy as np
+
 alphas = np.arange(0,1,0.1)
 
 # Define train_and_predict()

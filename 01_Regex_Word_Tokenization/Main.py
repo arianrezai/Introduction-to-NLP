@@ -2,9 +2,13 @@
 SECTION 1: BASIC REGEX FUNCTIONS
 """
 
-# Match words, digit and spaces in a text
-
+# Import necessary modules
+from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize
+from nltk.tokenize import regexp_tokenize
 import re
+
+# Match words, digit and spaces in a text
 
 re.match("\w+", "this is an example")
 
@@ -91,10 +95,6 @@ SOLDIER #2: Well, simple!  They'd just use a strand of creeper!
 SOLDIER #1: What, held under the dorsal guiding feathers?
 SOLDIER #2: Well, why not?"""
 
-# Import necessary modules
-from nltk.tokenize import sent_tokenize
-from nltk.tokenize import word_tokenize
-
 # Split scene_one into sentences: sentences
 sentences = sent_tokenize(scene_one)
 
@@ -144,8 +144,6 @@ SECTION 5: REGEX PATTERNS FOR TWEETS
 """
 
 my_string = "The player #1 has been selected!"
-
-from nltk.tokenize import regexp_tokenize
 
 # Write a pattern that matches words, Hashtags followed by a number and punctuation
 

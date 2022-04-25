@@ -1,22 +1,26 @@
 """
 SECTION 1: INTRODUCTION ON TOPIC IDENTIFICATION
 """
+# Import the necessary modules
 import os
-import sys
+from collections import Counter
+from nltk import word_tokenize
+from  nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+from itertools import chain
+from collections import defaultdict
+from gensim.corpora.dictionary import Dictionary
+from gensim.models.tfidfmodel import TfidfModel
+
 
 # Get current working directory and import text sources
 directory = os.getcwd()
 
-directory += "\\03. Topic Identification\\"
+directory += "\\03_Topic_Identification\\article_debugging.txt"
 
-sys.path.append(directory)
+with open(directory, "r",encoding="utf8") as article_file:
+    article = article_file.read()
 
-from Imports import *
-
-
-# Import Counter
-from collections import Counter
-from nltk import word_tokenize
 
 # Tokenize the article: tokens
 tokens = word_tokenize(article)
@@ -34,9 +38,8 @@ print(bow_simple.most_common(10))
 SECTION 2: LEMMATIZATION
 """
 
-# Import WordNetLemmatizer
-from  nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords 
+# Define English Stopwords
+
 english_stops = set(stopwords.words('english'))
 
 # Retain alphabetic words: alpha_only
@@ -62,13 +65,8 @@ SECTION 3: WORD VECTORIZATION
 """
 
 # The Dictionary function maps each token to an ID
-
 # dictionary.token2id can be used to see the mapping
- 
 # In the Corpus each document is transformed in it's BOW representation ( token_id: frequency )
-
-# Import Dictionary
-from gensim.corpora.dictionary import Dictionary
 
 # Create a Dictionary from the articles: dictionary
 dictionary = Dictionary(articles)
@@ -100,8 +98,6 @@ for word_id, word_count in bow_doc[:5]:
     print(dictionary.get(word_id), word_count)
 
 # Create the defaultdict: total_word_count containing total word count in all corpus
-from itertools import chain
-from collections import defaultdict
 
 total_word_count = defaultdict(int)
 for word_id, word_count in chain.from_iterable(corpus):
@@ -118,8 +114,6 @@ for word_id, word_count in sorted_word_count[:5]:
 """
 SECTION 5: TF-IDF
 """
-from gensim.models.tfidfmodel import TfidfModel
-
 # Create a new TfidfModel using the corpus: tfidf
 tfidf = TfidfModel(corpus)
 

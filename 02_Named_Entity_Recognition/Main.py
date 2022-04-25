@@ -6,19 +6,22 @@ SECTION 1: INTRODUCTION ON NAMED ENTITY RECOGNITION
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 import os
-import sys
+from collections import defaultdict
+import matplotlib.pyplot as plt
+import spacy
 
-# Get current working directory and import text sources
+# Get current working directory and import article sources
 directory = os.getcwd()
 
-directory += "\\02. Named Entity Recognition\\"
+directory += "\\02_Named_Entity_Recognition\\article_taxi.txt"
 
-sys.path.append(directory)
+with open(directory, "r",encoding="utf8") as article_file:
+    article = article_file.read()
 
-from Imports import *
+
 
 # Tokenize the article into sentences: sentences
-sentences = sent_tokenize(article_new)
+sentences = sent_tokenize(article)
 
 # Tokenize each sentence into words: token_sentences
 token_sentences = [word_tokenize(sent) for sent in sentences]
@@ -43,8 +46,6 @@ for sent in chunked_sentences:
 """
 SECTION 2: IDENTIFY HOW MANY TOKENS PRESENT A NER CATEGORY
 """
-from collections import defaultdict
-import matplotlib.pyplot as plt
 
 # Create the defaultdict: ner_categories
 ner_categories = defaultdict(int)
@@ -72,8 +73,6 @@ plt.show()
 """
 SECTION 3: INTRODUCTION TO spaCy
 """
-# Import spacy
-import spacy
 
 # Instantiate the English model: nlp
 nlp = spacy.load('en',tagger=False, parser=False, matcher=False)
