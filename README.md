@@ -1,4 +1,4 @@
-# Introduction-to-NLP
+# Introduction to NLP
 
 The following repository aims to collect fundamental functions needed to perform basic Natural Language Processing tasks. 
 
